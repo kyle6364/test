@@ -20,6 +20,6 @@ jobs:
           echo "Tags: $TAG"
           echo "Environment: $ENVIRONMENT"
         env:
-          TAGS: ${{ github.event.inputs.tag }}
+          TAG: ${{ github.event.inputs.tag }}
           ENVIRONMENT: ${{ github.event.inputs.environment }}
    
