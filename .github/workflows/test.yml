@@ -1,0 +1,15 @@
+name: CI - test
+on:
+   push:
+     branches:
+       - test
+   workflow_dispatch:
+       environment:
+         description: 'Docker image tag'
+         type: environment
+         required: false
+       tag:
+         description: 'Deploy to test env ?'
+         required: false
+         type: boolean
+
