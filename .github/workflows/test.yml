@@ -3,6 +3,9 @@ on:
    push:
      branches:
        - test
+   pull_request:
+    branches:
+      - test
    workflow_dispatch:
      inputs:
        environment:
@@ -20,6 +23,7 @@ jobs:
       - run: |
           echo "Tags: $TAG"
           echo "Environment: $ENVIRONMENT"
+          echo ${{github.event_name}}
         env:
           TAG: ${{ github.event.inputs.tag }}
           ENVIRONMENT: ${{ github.event.inputs.environment }}
