@@ -4,8 +4,8 @@ on:
      branches:
        - test
    pull_request:
-    branches:
-      - test
+     branches:
+       - test
    workflow_dispatch:
      inputs:
        environment:
