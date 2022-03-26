@@ -1,0 +1,8 @@
+name: CI - Relesse
+on:
+  push:
+    tags:
+      - "v*"
+  release:
+    types:
+      - published
