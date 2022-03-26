@@ -7,19 +7,13 @@ on:
 #     types:
 #       - published
 jobs:
-  inputs-value:
+  test:
     runs-on: ubuntu-latest
     steps:
-      - run: |
-          echo "Tags: $TAG"
-          echo "Environment: $ENVIRONMENT"
-          echo ${{github.event_name}}
-        env:
-          TAG: ${{ github.event.inputs.tag }}
-          ENVIRONMENT: ${{ github.event.inputs.environment }}
-      - name: Get the tag name
-        env:
-          ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
-          IMAGE_TAG: ${{ GITHUB_REF/refs\/tags\// }}
+      - uses: actions/checkout@v2
+      - name: Set env
+        run: echo "RELEASE_VERSION=${GITHUB_REF#refs/*/}" >> $GITHUB_ENV
+      - name: Test
         run: |
-          echo tag name = $IMAGE_TAG
+          echo $RELEASE_VERSION
+          echo ${{ env.RELEASE_VERSION }}
