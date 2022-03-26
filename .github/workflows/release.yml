@@ -18,6 +18,8 @@ jobs:
           TAG: ${{ github.event.inputs.tag }}
           ENVIRONMENT: ${{ github.event.inputs.environment }}
       - name: Get the tag name
+        env:
+          ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+          IMAGE_TAG: ${{ github.ref }}
         run: |
-          echo "IMAGE_TAG=${GITHUB_REF/refs\/tags\//}" >> $GITHUB_ENV
-          echo current tag is ${{ env.IMAGE_TAG }}
+          echo tag name = $IMAGE_TAG
