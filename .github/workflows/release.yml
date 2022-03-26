@@ -3,9 +3,9 @@ on:
   push:
     tags:
       - "v*"
-  release:
-    types:
-      - published
+#   release:
+#     types:
+#       - published
 jobs:
   inputs-value:
     runs-on: ubuntu-latest
